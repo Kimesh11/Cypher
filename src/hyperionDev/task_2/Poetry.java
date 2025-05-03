@@ -73,7 +73,7 @@ public class Poetry {
       char chCode = (char) cypherLetterCode; // Convert ASCII back to character.
       // Code for Compulsory task 2
       // If the shifted letter is a vowel, convert it to upper-case
-      if (chCode == 'a' || chCode == 'e' || chCode == 'i' || chCode == 'o' || chCode == 'u') {
+      if (isVowel(chCode)) {
         return String.valueOf(Character.toUpperCase(chCode));
       } else {
         return String.valueOf(chCode);
@@ -108,4 +108,7 @@ public class Poetry {
     return cypher.toString();
   }
 
+  private static boolean isVowel(char c) {
+    return "aeiouAEIOU".indexOf(c) != -1;  // Checks both lowercase and uppercase vowels.
+  }
 }
