@@ -26,8 +26,9 @@ public class Poetry {
       String line;
       while (Objects.nonNull(line = br.readLine())) {
         String reverseCypheredLine = getDecodedCypher(line);
-        System.out.println(reverseCypheredLine); // Print for debugging
-        fw.write(reverseCypheredLine + System.lineSeparator());
+        String replacedDigits = replaceDigits(reverseCypheredLine);
+        System.out.println(replacedDigits); // Print for debugging
+        fw.write(replacedDigits + System.lineSeparator());
       }
     } catch (FileNotFoundException e) {
       System.err.println("File not found: " + e.getMessage());
@@ -102,7 +103,11 @@ public class Poetry {
       }
     }
     // return reversed string
-    return cypher.reverse().toString();
+    return cypher.toString();
   }
 
+  private static String replaceDigits(String input) {
+    // Replaces all digits with a *.
+    return input.replaceAll("\\d", "*");
+  }
 }
